@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - PostgreSQL database with Drizzle ORM, a local Docker setup and versioned migrations.
+- Email sign-ups from the hero and the free guide are saved. Signing up twice keeps one
+  record and still shows a success message.
 
 ## [0.1.0] - 2026-10-19
 
