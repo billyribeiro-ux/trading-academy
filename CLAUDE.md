@@ -18,6 +18,7 @@ placeholder text; code quality is production grade.
 - Icons: `phosphor-svelte`, deep imports only
 - Tests: Vitest (unit + browser components), Playwright (e2e + axe)
 - Data: PostgreSQL 18, Drizzle ORM with postgres.js
+- Accounts: Better Auth (email and password)
 
 ## Commands
 
@@ -57,6 +58,8 @@ placeholder text; code quality is production grade.
 - Read state with `$app/state`, never `$app/stores`.
 - Read environment variables from `$app/env/public` or `$app/env/private`, never `$env/*`.
 - Pages get SEO data from their `load` function as `seo`; the root layout renders it.
+- Protected pages check `locals.user` in their server `load` and `redirect(303, '/sign-in')`.
+  Auth runs only through form actions calling `auth.api`, never from browser code.
 
 ## CSS rules
 
