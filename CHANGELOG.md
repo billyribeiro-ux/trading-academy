@@ -38,3 +38,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Frequently asked questions that open and close without JavaScript, and a support section
   with phone and email contact.
 - Friendly error and "page not found" pages, hidden from search engines.
+
+### Security
+
+- Content Security Policy that only allows scripts, styles, fonts and connections from the
+  site itself.
+- Security headers on every server-rendered response: `X-Content-Type-Options`,
+  `Referrer-Policy`, `Permissions-Policy`, `Cross-Origin-Opener-Policy` and
+  `X-Frame-Options`.
