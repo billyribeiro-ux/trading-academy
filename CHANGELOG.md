@@ -37,3 +37,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `BreadcrumbList` structured data, and a "latest articles" section on the homepage.
 - Frequently asked questions that open and close without JavaScript, and a support section
   with phone and email contact.
+- Friendly error and "page not found" pages, hidden from search engines.
