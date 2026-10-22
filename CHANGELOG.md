@@ -33,3 +33,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Memberships section with three plans and a monthly/yearly switch that works without
   JavaScript.
 - Free PDF guide offer: sign up with an email address to unlock the download.
+- Blog with an article list, article pages with breadcrumbs, `BlogPosting` and
+  `BreadcrumbList` structured data, and a "latest articles" section on the homepage.
