@@ -21,3 +21,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Announcement bar promoting the next free live training.
 - "Skip to main content" link for keyboard users.
 - Coming-soon pages for menu links that are not built yet, hidden from search engines.
+- Site footer with contact details, social and app links, three link columns, risk
+  disclaimers and a back-to-top link.
