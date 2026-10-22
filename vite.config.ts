@@ -11,7 +11,29 @@ export default defineConfig({
 				runes: ({ filename }) =>
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
-			adapter: adapter()
+			adapter: adapter(),
+			// Content Security Policy: the browser refuses any script, style, font or connection
+			// that does not come from this site. SvelteKit adds nonces (server-rendered pages) or
+			// hashes (prerendered pages) for the few inline tags it writes itself.
+			csp: {
+				mode: 'auto',
+				directives: {
+					'default-src': ['self'],
+					'script-src': ['self'],
+					'style-src': ['self'],
+					// Inline style attributes cannot carry a nonce. SvelteKit and Svelte write a few
+					// (the page wrapper, the route announcer, `style:` directives), so attributes are
+					// allowed; <style> elements and stylesheets stay locked to nonces and this site.
+					'style-src-attr': ['unsafe-inline'],
+					'img-src': ['self', 'data:'],
+					'font-src': ['self'],
+					'connect-src': ['self'],
+					'form-action': ['self'],
+					'base-uri': ['self'],
+					'object-src': ['none'],
+					'frame-ancestors': ['none']
+				}
+			}
 		})
 	],
 	test: {
