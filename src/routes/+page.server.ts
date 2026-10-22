@@ -1,5 +1,6 @@
 import { fail } from '@sveltejs/kit';
 import * as v from 'valibot';
+import { addSubscriber } from '#lib/server/subscribers.ts';
 import {
 	subscribeSchema,
 	subscribeSources,
@@ -38,6 +39,18 @@ export const actions = {
 				success: false,
 				email: field(data, 'email'),
 				error: parsed.issues[0]?.message ?? 'Check your email address and try again.'
+			} satisfies SubscribeResult);
+		}
+
+		try {
+			await addSubscriber(parsed.output);
+		} catch (error) {
+			console.error('Saving a subscriber failed', error);
+			return fail(503, {
+				source,
+				success: false,
+				email: parsed.output.email,
+				error: 'We could not save your sign-up just now. Please try again in a minute.'
 			} satisfies SubscribeResult);
 		}
 
