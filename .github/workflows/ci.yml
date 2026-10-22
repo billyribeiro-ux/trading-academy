@@ -21,7 +21,7 @@ jobs:
   verify:
     name: verify
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Check out the code
         uses: actions/checkout@v7
@@ -45,3 +45,15 @@ jobs:
 
       - name: Verify (check, lint, unit tests, build)
         run: pnpm verify
+
+      - name: End-to-end and accessibility tests
+        run: pnpm test:e2e
+
+      # Keep the HTML report when tests fail, so the failure can be inspected.
+      - name: Upload the Playwright report
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14

@@ -74,7 +74,7 @@
 				inputmode="email"
 				placeholder="you@example.com"
 				required
-				value={failure?.email ?? ''}
+				defaultValue={failure?.email ?? ''}
 				aria-invalid={failure ? 'true' : undefined}
 				aria-describedby={describedBy}
 			/>
