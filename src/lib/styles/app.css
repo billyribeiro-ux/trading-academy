@@ -1,0 +1,14 @@
+/*
+ * Global stylesheet, imported once by the root layout.
+ * The layer order below is the whole cascade strategy: later layers win, regardless of
+ * selector specificity. `components` is reserved for third-party component CSS. Svelte
+ * component styles are unlayered, so they win over every layer here.
+ */
+@layer reset, tokens, base, layout, components, utilities;
+
+@import '@fontsource-variable/inter';
+@import './reset.css';
+@import './tokens.css';
+@import './base.css';
+@import './layout.css';
+@import './utilities.css';
