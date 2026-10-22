@@ -1,0 +1,72 @@
+/* Base element styles: how plain HTML looks before any component styles apply. */
+@layer base {
+	html {
+		background-color: var(--color-bg);
+		color: var(--color-text);
+		font-family: var(--font-sans);
+		font-size: 100%;
+		line-height: var(--leading-normal);
+		/* Anchor links land below the sticky header instead of under it. */
+		scroll-padding-block-start: calc(var(--header-height) + var(--space-s));
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		html {
+			scroll-behavior: smooth;
+		}
+	}
+
+	body {
+		font-size: var(--step-0);
+	}
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		line-height: var(--leading-tight);
+		font-weight: var(--weight-bold);
+		letter-spacing: -0.02em;
+	}
+
+	h1 {
+		font-size: var(--step-5);
+	}
+
+	h2 {
+		font-size: var(--step-4);
+	}
+
+	h3 {
+		font-size: var(--step-2);
+	}
+
+	h4 {
+		font-size: var(--step-1);
+	}
+
+	a {
+		color: var(--color-brand);
+		text-decoration-thickness: 0.08em;
+		text-underline-offset: 0.18em;
+	}
+
+	a:hover {
+		color: var(--color-brand-strong);
+	}
+
+	:focus-visible {
+		outline: var(--focus-ring);
+		outline-offset: var(--focus-offset);
+	}
+
+	::selection {
+		background-color: var(--color-brand);
+		color: var(--color-on-brand);
+	}
+
+	hr {
+		border: 0;
+		border-block-start: var(--border-width) solid var(--color-border);
+	}
+}
