@@ -76,6 +76,21 @@ docs/
   in the same pull request.
 - **Decisions:** significant technical choices are recorded in `docs/adr/`.
 
+## Maintenance
+
+On the first working day of each month, update npm dependencies on a branch
+(see [ADR 0012](docs/adr/0012-update-npm-dependencies-manually-on-a-schedule.md)):
+
+```sh
+git switch -c chore/update-dependencies
+pnpm outdated
+pnpm up --latest
+pnpm audit
+pnpm verify
+```
+
+Dependabot opens pull requests for GitHub Actions updates every week.
+
 ## License
 
 Copyright © 2026 Billy Ribeiro. All rights reserved. See [LICENSE](LICENSE).
