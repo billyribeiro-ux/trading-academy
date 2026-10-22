@@ -29,9 +29,14 @@ SvelteKit 3 and Svelte 5 as a learning project that follows production practice 
 
 ## Getting started
 
+You need [Docker](https://www.docker.com/products/docker-desktop/) running for the local
+database.
+
 ```sh
 pnpm install
 cp .env.example .env
+pnpm db:start
+pnpm db:migrate
 pnpm dev
 ```
 
@@ -39,17 +44,22 @@ The site runs at <http://localhost:5173>.
 
 ## Scripts
 
-| Command          | What it does                                          |
-| ---------------- | ----------------------------------------------------- |
-| `pnpm dev`       | Start the dev server with hot reload                  |
-| `pnpm build`     | Build for production                                  |
-| `pnpm preview`   | Serve the production build locally                    |
-| `pnpm check`     | Type-check Svelte and TypeScript files                |
-| `pnpm lint`      | Check formatting (Prettier) and code quality (ESLint) |
-| `pnpm format`    | Format every file with Prettier                       |
-| `pnpm test:unit` | Run unit and component tests (Vitest)                 |
-| `pnpm test:e2e`  | Run end-to-end tests (Playwright)                     |
-| `pnpm verify`    | The full gate: check, lint, unit tests and build      |
+| Command            | What it does                                          |
+| ------------------ | ----------------------------------------------------- |
+| `pnpm dev`         | Start the dev server with hot reload                  |
+| `pnpm build`       | Build for production                                  |
+| `pnpm preview`     | Serve the production build locally                    |
+| `pnpm check`       | Type-check Svelte and TypeScript files                |
+| `pnpm lint`        | Check formatting (Prettier) and code quality (ESLint) |
+| `pnpm format`      | Format every file with Prettier                       |
+| `pnpm test:unit`   | Run unit and component tests (Vitest)                 |
+| `pnpm test:e2e`    | Run end-to-end tests (Playwright)                     |
+| `pnpm verify`      | The full gate: check, lint, unit tests and build      |
+| `pnpm db:start`    | Start the local PostgreSQL database (Docker)          |
+| `pnpm db:stop`     | Stop the local database                               |
+| `pnpm db:generate` | Create a migration from changes to the schema         |
+| `pnpm db:migrate`  | Apply pending migrations to the database              |
+| `pnpm db:studio`   | Browse the database in Drizzle Studio                 |
 
 Run `pnpm verify` before every commit. CI runs the same gate on every pull request.
 
@@ -77,6 +87,17 @@ docs/
   in the same pull request.
 - **Decisions:** significant technical choices are recorded in `docs/adr/`.
 
+## Database
+
+The schema lives in `src/lib/server/db/schema.ts`. To change it:
+
+1. Edit the schema.
+2. Run `pnpm db:generate --name <what-changed>` to write a migration into `drizzle/`.
+3. Read the generated SQL, then run `pnpm db:migrate`.
+4. Commit the schema change and the migration together.
+
+Never edit a migration that has already run anywhere; generate a new one instead.
+
 ## Deployment
 
 The app builds to a standalone Node.js server with `@sveltejs/adapter-node`.
@@ -87,6 +108,8 @@ PORT=3000 node build
 ```
 
 - `SITE_URL` must be set at build time: it is written into canonical URLs and the sitemap.
+- `DATABASE_URL` must be set when the server starts. Run `pnpm db:migrate` against the
+  production database before starting a new release.
 - Run the server behind a reverse proxy that terminates HTTPS. If the proxy rewrites headers,
   set `PROTOCOL_HEADER=x-forwarded-proto` and `HOST_HEADER=x-forwarded-host`.
 - To test the production build on your machine, use `pnpm preview`. `node build` assumes
