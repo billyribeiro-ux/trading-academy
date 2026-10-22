@@ -29,6 +29,7 @@
 		"verify": "pnpm run check && pnpm run lint && pnpm run test:unit --run && pnpm run build"
 	},
 	"devDependencies": {
+		"@axe-core/playwright": "^4.14.0",
 		"@commitlint/cli": "^21.2.4",
 		"@commitlint/config-conventional": "^21.2.4",
 		"@eslint/js": "^10.0.1",
