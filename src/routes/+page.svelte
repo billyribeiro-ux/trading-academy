@@ -1,5 +1,6 @@
 <script lang="ts">
 	import BlogPreview from '#lib/components/sections/BlogPreview.svelte';
+	import Faq from '#lib/components/sections/Faq.svelte';
 	import FeaturedCourses from '#lib/components/sections/FeaturedCourses.svelte';
 	import FeaturedIndicators from '#lib/components/sections/FeaturedIndicators.svelte';
 	import FounderStory from '#lib/components/sections/FounderStory.svelte';
@@ -8,9 +9,11 @@
 	import Memberships from '#lib/components/sections/Memberships.svelte';
 	import PressStrip from '#lib/components/sections/PressStrip.svelte';
 	import Services from '#lib/components/sections/Services.svelte';
+	import SupportContact from '#lib/components/sections/SupportContact.svelte';
 	import Testimonials from '#lib/components/sections/Testimonials.svelte';
 	import TradersGrid from '#lib/components/sections/TradersGrid.svelte';
 	import ValueProps from '#lib/components/sections/ValueProps.svelte';
+	import { faqs } from '#lib/content/faq.ts';
 	import { featuredCourses } from '#lib/content/courses.ts';
 	import { featuredIndicators } from '#lib/content/indicators.ts';
 	import { latestPosts } from '#lib/content/posts.ts';
@@ -37,3 +40,5 @@
 <Memberships {plans} />
 <LeadMagnet signup={form ?? undefined} />
 <BlogPreview posts={latestPosts(3)} />
+<Faq items={faqs} />
+<SupportContact />
