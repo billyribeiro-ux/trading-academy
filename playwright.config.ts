@@ -1,6 +1,28 @@
-import { defineConfig } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
+
+const isCI = Boolean(process.env['CI']);
 
 export default defineConfig({
-	webServer: { command: 'npm run build && npm run preview', port: 4173 },
-	testMatch: '**/*.e2e.{ts,js}'
+	testDir: 'e2e',
+	testMatch: '**/*.e2e.ts',
+	fullyParallel: true,
+	// A stray `test.only` must never pass CI by silently skipping everything else.
+	forbidOnly: isCI,
+	retries: isCI ? 2 : 0,
+	reporter: isCI ? [['github'], ['html', { open: 'never' }]] : 'list',
+	use: {
+		baseURL: 'http://localhost:4173',
+		trace: 'on-first-retry'
+	},
+	projects: [
+		{ name: 'desktop', use: { ...devices['Desktop Chrome'] } },
+		{ name: 'mobile', use: { ...devices['Pixel 7'] } }
+	],
+	// Tests run against the production build, exactly as visitors get it.
+	webServer: {
+		command: 'pnpm build && pnpm preview --port 4173 --strictPort',
+		port: 4173,
+		reuseExistingServer: !isCI,
+		timeout: 180_000
+	}
 });
