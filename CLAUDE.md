@@ -46,7 +46,10 @@ placeholder text; code quality is production grade.
 - Snippets and `{@render}`, never slots. Event attributes (`onclick`), never `on:click`.
 - Every component declares a `Props` interface. No `any`, no `@ts-ignore`, no `!` assertions
   without a comment explaining why the value cannot be null.
-- Import shared code with `#lib/...`. Read state with `$app/state`, never `$app/stores`.
+- Import shared code with `#lib/...` and always write the real file extension:
+  `#lib/config/site.ts`, `#lib/components/ui/Button.svelte`. Some files, such as
+  `src/params.ts`, are loaded by Node directly, which only finds files by their real name.
+- Read state with `$app/state`, never `$app/stores`.
 - Read environment variables from `$app/env/public` or `$app/env/private`, never `$env/*`.
 - Pages get SEO data from their `load` function as `seo`; the root layout renders it.
 
