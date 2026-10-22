@@ -1,0 +1,13 @@
+# Normalize every text file to LF in the repository, whatever the OS.
+* text=auto eol=lf
+
+# Binary files: never diff or touch line endings.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.avif binary
+*.gif binary
+*.ico binary
+*.woff2 binary
+*.pdf binary
