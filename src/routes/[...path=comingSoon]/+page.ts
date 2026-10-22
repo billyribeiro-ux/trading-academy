@@ -1,4 +1,4 @@
-import { headerLinks, primaryNav } from '#lib/config/navigation.ts';
+import { footerNav, headerLinks, primaryNav } from '#lib/config/navigation.ts';
 import { pageTitle, site } from '#lib/config/site.ts';
 import type { PageLoad } from './$types';
 
@@ -6,7 +6,8 @@ import type { PageLoad } from './$types';
 function labelFor(path: string): string {
 	const links = [
 		...primaryNav.flatMap((menu) => menu.groups.flatMap((group) => group.links)),
-		...Object.values(headerLinks)
+		...Object.values(headerLinks),
+		...footerNav.flatMap((column) => column.links)
 	];
 	return links.find((link) => link.href === path)?.label ?? 'Coming soon';
 }
