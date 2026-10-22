@@ -1,12 +1,12 @@
 // See https://svelte.dev/docs/kit/types#app.d.ts
-// for information about these interfaces
+import type { SeoData } from '#lib/components/seo/types.ts';
+
 declare global {
 	namespace App {
-		// interface Error {}
-		// interface Locals {}
-		// interface PageData {}
-		// interface PageState {}
-		// interface Platform {}
+		interface PageData {
+			/** Returned by every page's `load` function and rendered by the root layout. */
+			seo?: SeoData;
+		}
 	}
 }
 
