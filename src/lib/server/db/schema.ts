@@ -19,3 +19,5 @@ export const subscribers = pgTable(
 
 export type Subscriber = typeof subscribers.$inferSelect;
 export type NewSubscriber = typeof subscribers.$inferInsert;
+
+export * from './auth.schema.ts';

@@ -12,6 +12,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - PostgreSQL database with Drizzle ORM, a local Docker setup and versioned migrations.
 - Email sign-ups from the hero and the free guide are saved. Signing up twice keeps one
   record and still shows a success message.
+- Accounts: sign up, sign in and sign out with email and a password of at least 15
+  characters, and an account page for signed-in members. Every form works without
+  JavaScript.
+
+### Removed
+
+- Coming-soon placeholders for Sign in and Sign up, replaced by the real pages.
 
 ## [0.1.0] - 2026-10-19
 

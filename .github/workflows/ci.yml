@@ -18,6 +18,8 @@ env:
   SITE_URL: http://localhost:4173
   # Points at the PostgreSQL service below.
   DATABASE_URL: postgres://root:mysecretpassword@localhost:5432/local
+  # A throwaway value for test runs only. Production uses its own secret.
+  BETTER_AUTH_SECRET: ci-only-secret-for-test-runs-never-used-in-production
 
 jobs:
   verify:

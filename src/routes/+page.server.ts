@@ -1,5 +1,6 @@
 import { fail } from '@sveltejs/kit';
 import * as v from 'valibot';
+import { field } from '#lib/server/form-data.ts';
 import { addSubscriber } from '#lib/server/subscribers.ts';
 import {
 	subscribeSchema,
@@ -8,12 +9,6 @@ import {
 	type SubscribeSource
 } from '#lib/validation/subscribe.ts';
 import type { Actions } from './$types';
-
-/** Reads a form field as a string; anything else (a file, or nothing) becomes empty. */
-function field(data: FormData, name: string): string {
-	const value = data.get(name);
-	return typeof value === 'string' ? value : '';
-}
 
 /** Falls back to the hero form when a tampered request sends an unknown source. */
 function toSource(value: string): SubscribeSource {

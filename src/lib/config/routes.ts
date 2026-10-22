@@ -27,12 +27,10 @@ export const comingSoonPaths: ReadonlySet<string> = new Set([
 	'newsletters',
 	'about',
 	'traders',
-	'sign-in',
-	'sign-up',
 	'privacy',
 	'terms',
 	'risk-disclosure'
 ]);
 
 /** Menu destinations that are real pages, built under `src/routes/`. */
-export const builtPaths: ReadonlySet<string> = new Set(['blog']);
+export const builtPaths: ReadonlySet<string> = new Set(['blog', 'sign-in', 'sign-up']);

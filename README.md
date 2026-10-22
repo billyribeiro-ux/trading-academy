@@ -35,6 +35,8 @@ database.
 ```sh
 pnpm install
 cp .env.example .env
+# Put the output of this command in BETTER_AUTH_SECRET inside .env
+openssl rand -base64 32
 pnpm db:start
 pnpm db:migrate
 pnpm dev
@@ -108,8 +110,9 @@ PORT=3000 node build
 ```
 
 - `SITE_URL` must be set at build time: it is written into canonical URLs and the sitemap.
-- `DATABASE_URL` must be set when the server starts. Run `pnpm db:migrate` against the
-  production database before starting a new release.
+- `DATABASE_URL` and `BETTER_AUTH_SECRET` must be set when the server starts. Use a new
+  secret for every environment.
+- Run `pnpm db:migrate` against the production database before starting a new release.
 - Run the server behind a reverse proxy that terminates HTTPS. If the proxy rewrites headers,
   set `PROTOCOL_HEADER=x-forwarded-proto` and `HOST_HEADER=x-forwarded-host`.
 - To test the production build on your machine, use `pnpm preview`. `node build` assumes

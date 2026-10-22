@@ -1,7 +1,15 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
-const pages = ['/', '/blog', '/blog/placeholder-how-to-plan-a-trade', '/courses', '/not-a-page'];
+const pages = [
+	'/',
+	'/blog',
+	'/blog/placeholder-how-to-plan-a-trade',
+	'/courses',
+	'/sign-in',
+	'/sign-up',
+	'/not-a-page'
+];
 
 // Every rule tag up to WCAG 2.2 level AA.
 const wcagTags = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
