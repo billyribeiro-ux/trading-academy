@@ -23,3 +23,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Coming-soon pages for menu links that are not built yet, hidden from search engines.
 - Site footer with contact details, social and app links, three link columns, risk
   disclaimers and a back-to-top link.
+- Homepage hero with a free daily email sign-up. The form validates on the server, works
+  without JavaScript and shows clear error messages.
