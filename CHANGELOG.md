@@ -30,3 +30,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Featured indicators and featured courses sections.
 - Founder story, trading team grid, member testimonials with a "results not typical" note,
   and an "As seen in" press strip.
+- Memberships section with three plans and a monthly/yearly switch that works without
+  JavaScript.
