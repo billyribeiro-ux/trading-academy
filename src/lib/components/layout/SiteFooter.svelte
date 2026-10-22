@@ -108,7 +108,6 @@
 
 <style>
 	.site-footer {
-		margin-block-start: var(--space-2xl);
 		padding-block: var(--space-xl) var(--space-m);
 		border-block-start: var(--border-width) solid var(--color-border);
 		background-color: var(--color-surface);
