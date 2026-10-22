@@ -107,3 +107,38 @@ export const headerLinks = {
 	signIn: { label: 'Sign in', href: 'sign-in' },
 	cta: { label: 'Start free', href: '#free-guide' }
 } as const satisfies Record<string, NavLink>;
+
+/** A titled column of links in the footer. */
+export interface FooterColumn {
+	readonly title: string;
+	readonly links: readonly NavLink[];
+}
+
+/** Footer link columns. */
+export const footerNav: readonly FooterColumn[] = [
+	{
+		title: 'Learn more',
+		links: [
+			{ label: 'Memberships', href: '#memberships' },
+			{ label: 'Daily Videos', href: 'daily-videos' },
+			{ label: 'Newsletters', href: 'newsletters' },
+			{ label: 'Support', href: '#support' }
+		]
+	},
+	{
+		title: 'About',
+		links: [
+			{ label: 'Who We Are', href: 'about' },
+			{ label: 'Our Traders', href: 'traders' },
+			{ label: 'Blog', href: 'blog' }
+		]
+	},
+	{
+		title: 'Legal',
+		links: [
+			{ label: 'Privacy Policy', href: 'privacy' },
+			{ label: 'Terms & Conditions', href: 'terms' },
+			{ label: 'Risk Disclosure', href: 'risk-disclosure' }
+		]
+	}
+];

@@ -46,7 +46,12 @@ export const site = {
 		{ name: 'X', href: 'https://x.com/example' },
 		{ name: 'Facebook', href: 'https://www.facebook.com/example' },
 		{ name: 'Instagram', href: 'https://www.instagram.com/example' }
-	] satisfies readonly SocialProfile[]
+	] satisfies readonly SocialProfile[],
+	/** Mobile app store listings. */
+	apps: {
+		appStore: 'https://apps.apple.com/',
+		googlePlay: 'https://play.google.com/store/apps'
+	}
 } as const;
 
 /** Builds a page `<title>` with the site name at the end, one of the two placements Google's title guidance suggests. */
