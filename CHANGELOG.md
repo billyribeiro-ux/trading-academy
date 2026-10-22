@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-19
+
 ### Added
 
 - Design system: color, type, spacing, shape and motion tokens with automatic light and dark
@@ -46,3 +48,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Security headers on every server-rendered response: `X-Content-Type-Options`,
   `Referrer-Policy`, `Permissions-Policy`, `Cross-Origin-Opener-Policy` and
   `X-Frame-Options`.
+
+[Unreleased]: https://github.com/billyribeiro-ux/trading-academy/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/billyribeiro-ux/trading-academy/releases/tag/v0.1.0
