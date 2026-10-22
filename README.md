@@ -77,6 +77,24 @@ docs/
   in the same pull request.
 - **Decisions:** significant technical choices are recorded in `docs/adr/`.
 
+## Deployment
+
+The app builds to a standalone Node.js server with `@sveltejs/adapter-node`.
+
+```sh
+SITE_URL=https://www.example.com pnpm build
+PORT=3000 node build
+```
+
+- `SITE_URL` must be set at build time: it is written into canonical URLs and the sitemap.
+- Run the server behind a reverse proxy that terminates HTTPS. If the proxy rewrites headers,
+  set `PROTOCOL_HEADER=x-forwarded-proto` and `HOST_HEADER=x-forwarded-host`.
+- To test the production build on your machine, use `pnpm preview`. `node build` assumes
+  HTTPS, so form submissions over plain `http://localhost` are rejected by CSRF protection.
+- Prerendered pages and static files skip `src/hooks.server.ts`. Set the security headers
+  from [ADR 0014](docs/adr/0014-enforce-a-content-security-policy-and-security-headers.md),
+  plus `Strict-Transport-Security`, at the proxy.
+
 ## Maintenance
 
 On the first working day of each month, update npm dependencies on a branch
