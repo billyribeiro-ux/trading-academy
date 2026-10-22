@@ -2,7 +2,7 @@
  * Site-relative paths that search engines should index. The sitemap is generated from this
  * list, so adding a public page means adding its path here.
  */
-export const indexablePaths: readonly string[] = ['/'];
+export const indexablePaths: readonly string[] = ['/', '/blog'];
 
 /**
  * Menu destinations that are not built yet. Each one renders a shared "coming soon" page that
@@ -22,7 +22,6 @@ export const comingSoonPaths: ReadonlySet<string> = new Set([
 	'indicators',
 	'scanner',
 	'market-scorecard',
-	'blog',
 	'daily-videos',
 	'news',
 	'newsletters',
@@ -34,3 +33,6 @@ export const comingSoonPaths: ReadonlySet<string> = new Set([
 	'terms',
 	'risk-disclosure'
 ]);
+
+/** Menu destinations that are real pages, built under `src/routes/`. */
+export const builtPaths: ReadonlySet<string> = new Set(['blog']);

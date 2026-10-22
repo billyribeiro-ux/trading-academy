@@ -1,4 +1,11 @@
-import type { BreadcrumbList, Organization, Thing, WebSite, WithContext } from 'schema-dts';
+import type {
+	BlogPosting,
+	BreadcrumbList,
+	Organization,
+	Thing,
+	WebSite,
+	WithContext
+} from 'schema-dts';
 
 /** The site facts the structured-data builders need. */
 export interface SiteFacts {
@@ -86,5 +93,40 @@ export function breadcrumbSchema(
 			name: crumb.name,
 			item: new URL(crumb.path, origin).href
 		}))
+	};
+}
+
+/** The article facts `blogPostingSchema` needs. */
+export interface ArticleFacts {
+	readonly title: string;
+	readonly description: string;
+	/** Site-relative path of the article. */
+	readonly path: string;
+	/** Site-relative or absolute image URL. */
+	readonly image: string;
+	readonly publishedAt: string;
+	readonly updatedAt: string;
+	readonly authorName: string;
+}
+
+/** `BlogPosting` for an article page, with the author and publisher Google recommends. */
+export function blogPostingSchema(
+	site: SiteFacts,
+	article: ArticleFacts
+): WithContext<BlogPosting> {
+	const url = new URL(article.path, site.url).href;
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'BlogPosting',
+		'@id': `${url}#article`,
+		mainEntityOfPage: url,
+		headline: article.title,
+		description: article.description,
+		image: [new URL(article.image, site.url).href],
+		datePublished: article.publishedAt,
+		dateModified: article.updatedAt,
+		inLanguage: site.language,
+		author: { '@type': 'Person', name: article.authorName },
+		publisher: { '@id': `${site.url}/#organization` }
 	};
 }

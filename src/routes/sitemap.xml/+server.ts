@@ -1,5 +1,6 @@
 import { indexablePaths } from '#lib/config/routes.ts';
 import { absoluteUrl } from '#lib/config/site.ts';
+import { allPosts } from '#lib/content/posts.ts';
 import type { RequestHandler } from './$types';
 
 export const prerender = true;
@@ -17,7 +18,8 @@ function escapeXml(value: string): string {
 // Google ignores <priority> and <changefreq>, and only trusts <lastmod> when it is accurate,
 // so each entry lists just the canonical URL.
 export const GET: RequestHandler = () => {
-	const urls = indexablePaths
+	const paths = [...indexablePaths, ...allPosts.map((post) => `/blog/${post.slug}`)];
+	const urls = paths
 		.map((path) => `\t<url><loc>${escapeXml(absoluteUrl(path))}</loc></url>`)
 		.join('\n');
 

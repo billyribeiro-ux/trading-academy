@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+	blogPostingSchema,
 	breadcrumbSchema,
 	jsonLdScript,
 	organizationSchema,
@@ -84,5 +85,28 @@ describe('breadcrumbSchema', () => {
 			{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://example.com/' },
 			{ '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://example.com/blog' }
 		]);
+	});
+});
+
+describe('blogPostingSchema', () => {
+	it('builds absolute URLs and keeps both dates', () => {
+		const schema = blogPostingSchema(site, {
+			title: 'A post',
+			description: 'About things',
+			path: '/blog/a-post',
+			image: '/images/og-default.png',
+			publishedAt: '2026-10-01T08:00:00-05:00',
+			updatedAt: '2026-10-02T08:00:00-05:00',
+			authorName: 'Alex Morgan'
+		});
+
+		expect(schema).toMatchObject({
+			'@type': 'BlogPosting',
+			mainEntityOfPage: 'https://example.com/blog/a-post',
+			image: ['https://example.com/images/og-default.png'],
+			datePublished: '2026-10-01T08:00:00-05:00',
+			dateModified: '2026-10-02T08:00:00-05:00',
+			author: { '@type': 'Person', name: 'Alex Morgan' }
+		});
 	});
 });
