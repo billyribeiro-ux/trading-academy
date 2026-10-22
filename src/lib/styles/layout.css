@@ -1,0 +1,15 @@
+/* Layout primitives shared by every section. */
+@layer layout {
+	/* Centers content and keeps a consistent gutter on every screen size. */
+	.container {
+		inline-size: 100%;
+		max-inline-size: calc(var(--content-max) + var(--gutter) * 2);
+		margin-inline: auto;
+		padding-inline: var(--gutter);
+	}
+
+	/* Vertical rhythm between homepage sections. */
+	.section {
+		padding-block: var(--space-2xl);
+	}
+}
