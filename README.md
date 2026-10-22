@@ -31,6 +31,7 @@ SvelteKit 3 and Svelte 5 as a learning project that follows production practice 
 
 ```sh
 pnpm install
+cp .env.example .env
 pnpm dev
 ```
 
