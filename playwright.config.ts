@@ -22,6 +22,8 @@ export default defineConfig({
 	webServer: {
 		command: 'pnpm build && pnpm preview --port 4173 --strictPort',
 		port: 4173,
+		// The canonical origin must match where the tests run, for links and for auth checks.
+		env: { SITE_URL: 'http://localhost:4173' },
 		reuseExistingServer: !isCI,
 		timeout: 180_000
 	}
