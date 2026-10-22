@@ -3,6 +3,7 @@
 	import FeaturedIndicators from '#lib/components/sections/FeaturedIndicators.svelte';
 	import FounderStory from '#lib/components/sections/FounderStory.svelte';
 	import Hero from '#lib/components/sections/Hero.svelte';
+	import LeadMagnet from '#lib/components/sections/LeadMagnet.svelte';
 	import Memberships from '#lib/components/sections/Memberships.svelte';
 	import PressStrip from '#lib/components/sections/PressStrip.svelte';
 	import Services from '#lib/components/sections/Services.svelte';
@@ -32,3 +33,4 @@
 <Testimonials items={testimonials} />
 <PressStrip outlets={pressOutlets} />
 <Memberships {plans} />
+<LeadMagnet signup={form ?? undefined} />

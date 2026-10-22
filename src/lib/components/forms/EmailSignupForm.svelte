@@ -16,9 +16,14 @@
 		successMessage: string;
 		/** Optional helper text under the field, such as a privacy note. */
 		hint?: string;
+		/**
+		 * Id of the section that holds the form. Without JavaScript the browser reloads the page
+		 * after a submit; the fragment scrolls it back to this form so the result is visible.
+		 */
+		anchor?: string;
 	}
 
-	let { source, result, label, buttonLabel, successMessage, hint }: Props = $props();
+	let { source, result, label, buttonLabel, successMessage, hint, anchor }: Props = $props();
 
 	// Unique on the server and in the browser, so label/field ids never collide or mismatch.
 	const id = $props.id();
@@ -44,7 +49,12 @@
 {#if ownResult?.success}
 	<p class="success" role="status">{successMessage}</p>
 {:else}
-	<form class="signup" method="POST" action="?/subscribe" use:enhance={submit}>
+	<form
+		class="signup"
+		method="POST"
+		action={anchor ? `?/subscribe#${anchor}` : '?/subscribe'}
+		use:enhance={submit}
+	>
 		<input type="hidden" name="source" value={source} />
 
 		<!-- Honeypot: hidden from people and screen readers, so only bots fill it in. -->
