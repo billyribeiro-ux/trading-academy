@@ -36,5 +36,17 @@ export const variables = defineEnvVars({
 			}
 			return value;
 		}
+	},
+	BETTER_AUTH_SECRET: {
+		description: 'Signs session cookies. Generate one with: openssl rand -base64 32',
+		schema: (value) => {
+			// The build loads the auth module, and Better Auth refuses to load without a secret.
+			// This stand-in exists only during the build; a running server always needs the real one.
+			if (building) return value || 'build-time-only-secret-never-used-to-sign-anything';
+			if (!value || value.length < 32) {
+				throw new Error('BETTER_AUTH_SECRET must be at least 32 characters');
+			}
+			return value;
+		}
 	}
 });
