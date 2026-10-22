@@ -29,6 +29,7 @@ export const comingSoonPaths: ReadonlySet<string> = new Set([
 	'about',
 	'traders',
 	'sign-in',
+	'sign-up',
 	'privacy',
 	'terms',
 	'risk-disclosure'
