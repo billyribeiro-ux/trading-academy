@@ -16,12 +16,28 @@ permissions:
 env:
   # Required by src/env.ts at build time. CI serves the build on localhost.
   SITE_URL: http://localhost:4173
+  # Points at the PostgreSQL service below.
+  DATABASE_URL: postgres://root:mysecretpassword@localhost:5432/local
 
 jobs:
   verify:
     name: verify
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: mysecretpassword
+          POSTGRES_DB: local
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U root -d local"
+          --health-interval 2s
+          --health-timeout 5s
+          --health-retries 15
     steps:
       - name: Check out the code
         uses: actions/checkout@v7
@@ -45,6 +61,9 @@ jobs:
 
       - name: Verify (check, lint, unit tests, build)
         run: pnpm verify
+
+      - name: Apply database migrations
+        run: pnpm db:migrate
 
       - name: End-to-end and accessibility tests
         run: pnpm test:e2e

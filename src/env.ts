@@ -1,3 +1,4 @@
+import { building } from '$app/env';
 import { defineEnvVars } from '@sveltejs/kit/env';
 
 /**
@@ -21,6 +22,19 @@ export const variables = defineEnvVars({
 				throw new Error('SITE_URL must be an origin only, with no path or trailing slash');
 			}
 			return url.origin;
+		}
+	},
+	DATABASE_URL: {
+		description: 'PostgreSQL connection string, e.g. postgres://user:password@host:5432/db',
+		// Not needed to build, but the server refuses to start without a valid value.
+		schema: (value) => {
+			if (building) return value ?? '';
+			if (!value) throw new Error('DATABASE_URL is required to start the server');
+			const { protocol } = new URL(value);
+			if (protocol !== 'postgres:' && protocol !== 'postgresql:') {
+				throw new Error('DATABASE_URL must start with postgres:// or postgresql://');
+			}
+			return value;
 		}
 	}
 });
