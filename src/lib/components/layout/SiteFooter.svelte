@@ -146,6 +146,10 @@
 		text-decoration: none;
 	}
 
+	.contact :global(svg) {
+		flex-shrink: 0;
+	}
+
 	.contact a:hover {
 		color: var(--color-brand);
 	}

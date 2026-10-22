@@ -35,3 +35,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Free PDF guide offer: sign up with an email address to unlock the download.
 - Blog with an article list, article pages with breadcrumbs, `BlogPosting` and
   `BreadcrumbList` structured data, and a "latest articles" section on the homepage.
+- Frequently asked questions that open and close without JavaScript, and a support section
+  with phone and email contact.
