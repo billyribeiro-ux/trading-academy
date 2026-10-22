@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-19
+
 ### Added
 
 - PostgreSQL database with Drizzle ORM, a local Docker setup and versioned migrations.
@@ -62,5 +64,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `Referrer-Policy`, `Permissions-Policy`, `Cross-Origin-Opener-Policy` and
   `X-Frame-Options`.
 
-[Unreleased]: https://github.com/billyribeiro-ux/trading-academy/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/billyribeiro-ux/trading-academy/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/billyribeiro-ux/trading-academy/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/billyribeiro-ux/trading-academy/releases/tag/v0.1.0
