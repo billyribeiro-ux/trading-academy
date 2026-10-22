@@ -17,6 +17,7 @@ placeholder text; code quality is production grade.
 - Plain CSS with design tokens. No Tailwind, no CSS frameworks
 - Icons: `phosphor-svelte`, deep imports only
 - Tests: Vitest (unit + browser components), Playwright (e2e + axe)
+- Data: PostgreSQL 18, Drizzle ORM with postgres.js
 
 ## Commands
 
@@ -26,6 +27,8 @@ placeholder text; code quality is production grade.
 - Format: `pnpm format`
 - Unit and component tests: `pnpm test:unit --run`
 - End-to-end tests: `pnpm test:e2e`
+- Database: `pnpm db:start`, then `pnpm db:migrate`. After a schema change:
+  `pnpm db:generate --name <change>` and commit the migration with the schema
 
 ## Layout
 
@@ -37,6 +40,8 @@ placeholder text; code quality is production grade.
 - `src/lib/content/` placeholder content as typed data
 - `src/lib/config/` site settings and navigation
 - `src/lib/styles/` tokens, reset, base styles
+- `src/lib/server/db/` Drizzle schema and connection (server only)
+- `drizzle/` generated migrations: never edit one that has run
 - `src/env.ts` every environment variable, declared and validated
 
 ## Svelte and SvelteKit rules
