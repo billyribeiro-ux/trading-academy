@@ -1,54 +1,81 @@
-# sv
+# Trading Academy
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A trading-education website: homepage, blog, memberships and a free-guide sign-up. Built with
+SvelteKit 3 and Svelte 5 as a learning project that follows production practice end to end.
 
-## Creating a project
+> [!NOTE]
+> All copy on the site is placeholder text. The structure, code and process are the real
+> deliverable.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Tech stack
 
-```sh
-# create a new project
-npx sv create my-app
-```
+| Layer            | Choice                                       |
+| ---------------- | -------------------------------------------- |
+| Framework        | SvelteKit 3.1 · Svelte 5 (runes)             |
+| Language         | TypeScript 6 (strict)                        |
+| Runtime          | Node.js 24 LTS (`.nvmrc`)                    |
+| Package manager  | pnpm 12 (pinned in `package.json`)           |
+| Styling          | Plain CSS: custom properties, cascade layers |
+| Icons            | Phosphor (`phosphor-svelte`)                 |
+| Tests            | Vitest (unit + browser), Playwright (e2e)    |
+| Backend (Part 2) | PostgreSQL · Drizzle ORM · Better Auth       |
 
-To recreate this project with the same configuration:
+## Requirements
 
-```sh
-# recreate this project
-pnpm dlx sv@1.1.1 create --template minimal --types ts --add prettier eslint vitest="usages:unit,component" playwright="demo:no" sveltekit-adapter="adapter:node" ai-tools="ide:claude-code+delivery:plugin" --install pnpm trading-academy
-```
+- Node.js 24 LTS, the exact version in `.nvmrc`. With [mise](https://mise.jdx.dev), run
+  `mise settings add idiomatic_version_file_enable_tools node` once per machine, then
+  `mise install` in this folder.
+- pnpm 12. `pnpm --version` should print `12.x`.
 
-## Adding features
-
-Add features to your project with `sv add`:
-
-```sh
-npx sv add
-```
-
-For example, to add Tailwind CSS:
-
-```sh
-npx sv add tailwindcss
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Getting started
 
 ```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm install
+pnpm dev
 ```
 
-## Building
+The site runs at <http://localhost:5173>.
 
-To create a production version of your app:
+## Scripts
 
-```sh
-npm run build
+| Command          | What it does                                          |
+| ---------------- | ----------------------------------------------------- |
+| `pnpm dev`       | Start the dev server with hot reload                  |
+| `pnpm build`     | Build for production                                  |
+| `pnpm preview`   | Serve the production build locally                    |
+| `pnpm check`     | Type-check Svelte and TypeScript files                |
+| `pnpm lint`      | Check formatting (Prettier) and code quality (ESLint) |
+| `pnpm format`    | Format every file with Prettier                       |
+| `pnpm test:unit` | Run unit and component tests (Vitest)                 |
+| `pnpm test:e2e`  | Run end-to-end tests (Playwright)                     |
+| `pnpm verify`    | The full gate: check, lint, unit tests and build      |
+
+Run `pnpm verify` before every commit. CI runs the same gate on every pull request.
+
+## Project structure
+
+```text
+src/
+├─ lib/
+│  ├─ components/   UI components: layout, sections, SEO, primitives
+│  ├─ content/      Placeholder content as typed data
+│  ├─ config/       Site-wide settings: name, URL, navigation
+│  └─ styles/       Design tokens and global CSS
+└─ routes/          Pages and endpoints (file-based routing)
+docs/
+├─ PLAN.md          What we are building and how we know it works
+└─ adr/             Architecture Decision Records
 ```
 
-You can preview the production build with `npm run preview`.
+## How we work
+
+- **Branches:** `main` is protected. Every change goes through a branch and a pull request.
+- **Commits:** [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), one
+  logical change per commit.
+- **Changelog:** every user-visible change adds a line to `CHANGELOG.md` under `[Unreleased]`
+  in the same pull request.
+- **Decisions:** significant technical choices are recorded in `docs/adr/`.
+
+## License
+
+Copyright © 2026 Billy Ribeiro. All rights reserved. See [LICENSE](LICENSE).
