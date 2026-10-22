@@ -16,3 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `robots.txt` and `sitemap.xml`.
 - Structured data for the homepage (`Organization` and `WebSite`).
 - Brand favicon, logo and default social sharing image.
+- Site header with five dropdown menus, Pricing, Sign in and a call to action. On small
+  screens the menu opens as a full-height sheet.
+- Announcement bar promoting the next free live training.
+- "Skip to main content" link for keyboard users.
+- Coming-soon pages for menu links that are not built yet, hidden from search engines.
