@@ -32,3 +32,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   and an "As seen in" press strip.
 - Memberships section with three plans and a monthly/yearly switch that works without
   JavaScript.
+- Free PDF guide offer: sign up with an email address to unlock the download.
