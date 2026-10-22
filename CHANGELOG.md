@@ -28,3 +28,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Homepage "why join" section with four value points, and a services section with cards for
   trading rooms, classes, indicators and alerts.
 - Featured indicators and featured courses sections.
+- Founder story, trading team grid, member testimonials with a "results not typical" note,
+  and an "As seen in" press strip.
