@@ -27,3 +27,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   without JavaScript and shows clear error messages.
 - Homepage "why join" section with four value points, and a services section with cards for
   trading rooms, classes, indicators and alerts.
+- Featured indicators and featured courses sections.
