@@ -1,0 +1,12 @@
+/* Single-purpose helpers. The last layer, so they win over every other global layer. */
+@layer utilities {
+	/* Hidden on screen but still read by screen readers. */
+	.visually-hidden:not(:focus-within, :active) {
+		clip-path: inset(50%);
+		block-size: 1px;
+		inline-size: 1px;
+		overflow: hidden;
+		position: absolute;
+		white-space: nowrap;
+	}
+}
