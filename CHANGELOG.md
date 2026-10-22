@@ -25,3 +25,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   disclaimers and a back-to-top link.
 - Homepage hero with a free daily email sign-up. The form validates on the server, works
   without JavaScript and shows clear error messages.
+- Homepage "why join" section with four value points, and a services section with cards for
+  trading rooms, classes, indicators and alerts.
